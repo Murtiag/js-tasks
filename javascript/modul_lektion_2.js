@@ -137,4 +137,83 @@ const aufgabe1_4 = () => {
   chains.printHotels();
 };
 
-aufgabe1_4();
+const aufgabe2_1 = () => {
+  const outerWidth = window.outerWidth;
+  const outerHeight = window.outerHeight;
+
+  const innerWidth = window.innerWidth;
+  const innerHeight = window.innerHeight;
+
+  // whole browsertab container
+  console.log("outer H/W:", outerHeight, outerWidth);
+
+  // visible part, container - devtools
+  console.log("inner H/W:", innerHeight, innerWidth);
+};
+
+const aufgabe2_2 = () => {
+  const maxWidth = window.screen.width;
+  const maxHeight = window.screen.height;
+
+  const availWidth = window.screen.availWidth;
+  const availHeight = window.screen.availHeight;
+
+  const colorDepth = window.screen.colorDepth;
+  const maxColors = Math.pow(2, colorDepth);
+
+  console.log("Screen H/W:", maxHeight, maxWidth);
+  console.log("Avaiable H/W;", availHeight, availWidth);
+  console.log("Depth: " + colorDepth + "-bit, Possible Colors: ", maxColors);
+};
+
+const aufgabe2_3 = () => {
+  const obj = {
+    hosts: [
+      {
+        hostname: location.hostname,
+        port: location.port,
+        protocol: location.protocol,
+        path: location.pathname,
+      },
+    ],
+  };
+
+  const printHost = () => {
+    const host = obj.hosts[0];
+
+    console.log("host: ", host.hostname);
+    console.log("port: ", host.port);
+    console.log("protocol: ", host.protocol);
+    console.log("path: ", host.path);
+  };
+
+  printHost();
+};
+
+const aufgabe2_4 = () => {
+  const printNumbers = (from, to) => {
+    let counter = from;
+    setTimeout(() => {
+      const timerId = setInterval(() => {
+        if (counter <= to) {
+          console.log(counter);
+          counter += 1;
+        } else {
+          clearInterval(timerId);
+        }
+      }, 1000);
+    }, 4000);
+  };
+
+  printNumbers(1, 10);
+};
+
+const aufgabe2_5 = () => {
+  setInterval(() => {
+    const el = document.getElementById("timer");
+
+    el.innerText = new Date().toLocaleTimeString();
+  }, 1000);
+};
+
+aufgabe2_5();
