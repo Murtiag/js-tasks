@@ -14,6 +14,7 @@ const unterricht = () => {
 };
 
 const aufgabe1_1 = () => {
+  // Objekte in Literalschreibweise
   const hotelA = {
     name: "true",
     roomAmount: 45,
@@ -46,6 +47,94 @@ const aufgabe1_1 = () => {
   printDetails(hotelB);
 };
 
-const aufgabe1_2 = () => {};
+const aufgabe1_2 = () => {
+  // Prototype mit Konstruktorsyntax
+  function Hotel(name, roomAmount, bookedRooms) {
+    this.name = name;
+    this.roomAmount = roomAmount;
+    this.bookedRooms = bookedRooms;
 
-unterricht();
+    this.getFreeRooms = () =>
+      parseInt(this.roomAmount) - parseInt(this.bookedRooms);
+
+    this.printDetails = () =>
+      console.log(
+        `Name des Hotels: ${this.name} Anzahl Zimmer: ${
+          this.roomAmount
+        } Gebuchte Zimmer: ${
+          this.bookedRooms
+        } Freie Zimmer: ${this.getFreeRooms()}`
+      );
+  }
+
+  const hotelA = new Hotel("Park", 10, 3);
+
+  hotelA.printDetails();
+};
+const aufgabe1_3 = () => {
+  // Klassensyntax
+  class Hotel {
+    constructor(name, roomAmount, bookedRooms) {
+      this.name = name;
+      this.roomAmount = roomAmount;
+      this.bookedRooms = bookedRooms;
+    }
+
+    getFreeRooms = () => parseInt(this.roomAmount) - parseInt(this.bookedRooms);
+
+    printDetails = () =>
+      console.log(
+        `Name des Hotels: ${this.name} Anzahl Zimmer: ${
+          this.roomAmount
+        } Gebuchte Zimmer: ${
+          this.bookedRooms
+        } Freie Zimmer: ${this.getFreeRooms()}`
+      );
+  }
+  const hotelA = new Hotel("Park", 10, 3);
+
+  hotelA.printDetails();
+};
+const aufgabe1_4 = () => {
+  // Klassensyntax
+  class Hotel {
+    constructor(name, roomAmount, bookedRooms) {
+      this.name = name;
+      this.roomAmount = roomAmount;
+      this.bookedRooms = bookedRooms;
+    }
+
+    getFreeRooms = () => parseInt(this.roomAmount) - parseInt(this.bookedRooms);
+
+    printDetails = () =>
+      console.log(
+        `Name des Hotels: ${this.name} Anzahl Zimmer: ${
+          this.roomAmount
+        } Gebuchte Zimmer: ${
+          this.bookedRooms
+        } Freie Zimmer: ${this.getFreeRooms()}`
+      );
+  }
+
+  class Hotelchain {
+    constructor() {
+      this.hotels = [];
+    }
+
+    addHotel(hotel) {
+      this.hotels.push(hotel);
+    }
+
+    printHotels() {
+      this.hotels.forEach((hotel) => hotel.printDetails());
+    }
+  }
+
+  const chains = new Hotelchain();
+  chains.addHotel(new Hotel("Park", 10, 2));
+  chains.addHotel(new Hotel("Quay", 7, 1));
+
+  chains.printHotels();
+};
+
+aufgabe1_4();
